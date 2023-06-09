@@ -40,7 +40,11 @@ node {
 }
 
 stage('Deploy'){
-		script{
-			
+		
+			def dockerImage = docker.image('prajvalgh/assignmenttwo:1')
+			dockerImage.run('-d -p 8081:8080 --name app')	
+
 }
+
+
 }
