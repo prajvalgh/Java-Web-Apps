@@ -22,7 +22,7 @@ node {
 		sh 'mvn package'
             }
         }
-
+	}
   stage('Build Image') {
   
        app = docker.build("prajvalgh/assignmenttwo")
