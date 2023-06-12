@@ -7,6 +7,22 @@ node {
         checkout scm
     }
 
+	stage('Build') {
+            steps {
+                // Build your Java application
+                // For example, using Maven
+                sh 'mvn clean install'
+            }
+        }
+
+	stage('Package') {
+            steps {
+                // Package your Java application
+                // For example, using Maven
+                sh 'mvn package'
+            }
+        }
+
   stage('Build Image') {
   
        app = docker.build("prajvalgh/assignmenttwo/target")
@@ -25,6 +41,5 @@ node {
 			dockerImage.run('-d -p 8081:8080 --name app')	
 
 		}
-
 
 	}
