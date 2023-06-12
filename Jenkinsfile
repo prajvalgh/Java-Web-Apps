@@ -7,25 +7,25 @@ node {
         checkout scm
     }
 
-	stage('Build') {
-            steps {
+	stage('Update GIT') {
+            script {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                      
+                        sh "git config user.email prajvalgh12@gmail.com"
+                        sh "git config user.name prajvalgh"
+                      
                 // Build your Java application
                 // For example, using Maven
+		
                 sh 'mvn clean install'
-            }
-        }
-
-	stage('Package') {
-            steps {
-                // Package your Java application
-                // For example, using Maven
-                sh 'mvn package'
+		sh 'mvn package'
             }
         }
 
   stage('Build Image') {
   
-       app = docker.build("prajvalgh/assignmenttwo/target")
+       app = docker.build("prajvalgh/assignmenttwo")
     }
 
   stage('Push Image') {
