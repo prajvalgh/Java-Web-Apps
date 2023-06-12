@@ -23,6 +23,7 @@ node {
             }
         }
 	}
+	}
   stage('Build Image') {
   
        app = docker.build("prajvalgh/assignmenttwo")
