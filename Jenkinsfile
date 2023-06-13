@@ -18,8 +18,8 @@ node {
                 // Build your Java application
                 // For example, using Maven
 		
-                sh 'mvn install'
-		sh 'mvn package'
+                sh 'sudo mvn install'
+		sh 'sudo mvn package'
             }
         }
 	}
