@@ -8,8 +8,7 @@ node {
     }
 
   stage('Build Image') {
-  
-       app = docker.build("prajvalgh/assignmenttwo/target")
+       app = docker.build("prajvalgh/javaimageone")
     }
 
   stage('Push Image') {
