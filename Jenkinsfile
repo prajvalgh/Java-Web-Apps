@@ -21,6 +21,7 @@ node {
 	stage('Deploy')	{
 		
 			def dockerImage = docker.image('prajvalgh/javaimageone:'+"${env.BUILD_NUMBER}")
+			sh 'docker rm -f app'
 			dockerImage.run('-d -p 8081:8080 --name app')	
 
 		}
