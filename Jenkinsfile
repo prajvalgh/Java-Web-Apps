@@ -19,8 +19,8 @@ node {
   }
 
 	stage('Deploy')	{
-			def env = ("${env.BUILD_NUMBER}")
-			def dockerImage = docker.image('prajvalgh/javaimageone:$env')
+		
+			def dockerImage = docker.image("prajvalgh/javaimageone:('${env.BUILD_NUMBER}')")
 			dockerImage.run('-d -p 8081:8080 --name app')	
 
 		}
